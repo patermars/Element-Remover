@@ -1,0 +1,3 @@
+# Element Remover
+
+This browser extension, called "Element Remover," allows users to interactively remove elements from web pages. When activated, it changes the cursor to a custom icon, signaling that the deletion mode is active. Users can then hover over any element on the webpage, which gets highlighted with a red outline. Clicking on a highlighted element immediately removes it from the page. This tool is particularly useful for temporarily cleaning up cluttered websites, removing unwanted content, or customizing the viewing experience. The extension includes a simple toggle button in its popup interface, enabling users to easily switch the element deletion functionality on and off as needed.
