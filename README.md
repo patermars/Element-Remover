@@ -32,6 +32,15 @@ Option 3:
 4. Click on a highlighted element to delete it from the page.
 5. To stop deleting elements, open the popup again and click "Disable Deleter".
 
+### Usage Demo
+
+#### Trying out on Google
+https://github.com/user-attachments/assets/0b2a00e7-3eed-4b06-aabd-38303c4633db
+
+
+#### Removing clutter while reading an article
+https://github.com/user-attachments/assets/d7bdc9fe-3b11-46ef-ac9d-e6c81f11f659
+
 ## Development
 This extension is built using vanilla JavaScript, HTML, and CSS. The main components are:
 - `manifest.json`: Extension configuration
