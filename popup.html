@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      body {
-        width: 200px;
-        font-family: Arial, sans-serif;
-      }
-      button {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-      }
-    </style>
-  </head>
-  <body>
-    <button id="activate">Activate Removal Mode</button>
-    <button id="deactivate">Deactivate Removal Mode</button>
-    <script src="popup.js"></script>
-  </body>
+<head>
+  <style>
+    body { width: 100px; padding: 10px; }
+    button {
+      width: 100%;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: #377c3a;
+      transform: scale(1.1);
+    }
+
+    button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleButton">Enable Deleter</button>
+  <script src="popup.js"></script>
+</body>
 </html>

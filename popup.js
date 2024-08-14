@@ -1,28 +1,15 @@
-document.getElementById("activate").addEventListener("click", () => {
-    chrome.scripting.executeScript({
-      target: { tabId: chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => tabs[0].id) },
-      function: activateRemovalMode,
-    });
+let enabled = false;
+
+document.getElementById('toggleButton').addEventListener('click', function() {
+  enabled = !enabled;
+  this.textContent = enabled ? 'Disable Deleter' : 'Enable Deleter';
+  chrome.storage.local.set({enabled: enabled});
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {action: "toggle", enabled: enabled});
   });
-  
-  document.getElementById("deactivate").addEventListener("click", () => {
-    chrome.scripting.executeScript({
-      target: { tabId: chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => tabs[0].id) },
-      function: deactivateRemovalMode,
-    });
-  });
-  
-  function activateRemovalMode() {
-    document.addEventListener("click", removeElement, true);
-  }
-  
-  function deactivateRemovalMode() {
-    document.removeEventListener("click", removeElement, true);
-  }
-  
-  function removeElement(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    event.target.remove();
-  }
-  
+});
+
+chrome.storage.local.get('enabled', function(data) {
+  enabled = data.enabled || false;
+  document.getElementById('toggleButton').textContent = enabled ? 'Disable Deleter' : 'Enable Deleter';
+});

@@ -1,14 +1,28 @@
 {
-    "manifest_version": 3,
-    "name": "Element Remover",
-    "version": "1.0",
-    "description": "Click to remove elements from any webpage.",
-    "permissions": ["activeTab", "scripting"],
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "background": {
-      "service_worker": "background.js"
+  "manifest_version": 2,
+  "name": "Element Deleter",
+  "version": "1.0",
+  "description": "Delete webpage elements by hovering and clicking",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "icons": {
+    "16": "cursor.png",
+    "48": "cursor.png",
+    "128": "cursor.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "cursor.png",
+      "48": "cursor.png"
     }
-  }
-  
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
