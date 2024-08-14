@@ -2,10 +2,6 @@ let hoveredElement = null;
 let enabled = false;
 let originalCursor = '';
 
-function setCursor(cursorType) {
-  document.body.style.cursor = cursorType;
-}
-
 function highlightElement(element) {
   if (enabled) {
     element.style.outline = '2px solid red';
@@ -51,6 +47,15 @@ document.addEventListener('click', function(event) {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === "toggle") {
     enabled = request.enabled;
+    if (enabled) {
+          document.querySelectorAll('*').forEach(element => {
+            element.style.cursor = 'url(https://i.postimg.cc/05zZv2kN/cursor.png) 10 10, auto';
+      });
+    } else {
+      document.querySelectorAll('*').forEach(element => {
+        element.style.cursor = 'default';
+  });
+    }
     if (!enabled && hoveredElement) {
       removeHighlight(hoveredElement);
       hoveredElement = null;
@@ -60,4 +65,5 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 chrome.storage.local.get('enabled', function(data) {
   enabled = data.enabled || false;
+  setCursor(enabled ? 'url(https://i.postimg.cc/05zZv2kN/cursor.png) 10 10, auto' : 'default');
 });
